@@ -3,5 +3,129 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "gen-regex-angular": {
+      "projectType": "library",
+      "root": "projects/gen-regex-angular",
+      "sourceRoot": "projects/gen-regex-angular/src",
+      "prefix": "ms",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/gen-regex-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/gen-regex-angular/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/gen-regex-angular/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/gen-regex-angular/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "test-gen-regex": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/test-gen-regex",
+      "sourceRoot": "projects/test-gen-regex/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/test-gen-regex",
+            "index": "projects/test-gen-regex/src/index.html",
+            "main": "projects/test-gen-regex/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/test-gen-regex/tsconfig.app.json",
+            "assets": [
+              "projects/test-gen-regex/src/favicon.ico",
+              "projects/test-gen-regex/src/assets"
+            ],
+            "styles": [
+              "projects/test-gen-regex/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "test-gen-regex:build:production"
+            },
+            "development": {
+              "browserTarget": "test-gen-regex:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "test-gen-regex:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/test-gen-regex/tsconfig.spec.json",
+            "assets": [
+              "projects/test-gen-regex/src/favicon.ico",
+              "projects/test-gen-regex/src/assets"
+            ],
+            "styles": [
+              "projects/test-gen-regex/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
   }
 }

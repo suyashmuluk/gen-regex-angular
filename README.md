@@ -1,27 +1,45 @@
-# GenRegexAngular
+# gen-regex
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+# Intro
 
-## Development server
+<p>Generates regular expression according to passed parameters.</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Installation
 
-## Code scaffolding
+```bash
+npm i gen-regex-angular
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Usage
 
-## Build
+## <p>Step 1</p>
+Import package in your node js project
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```javascript
+const regex = require('gen-regex');
+```
 
-## Running unit tests
+## <p>Step 2</p>
+After import, use the created instance throughout your project by passing the parameters for which you have to create the regex pattern
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```javascript
+const pattern = regex('mail');
+```
+or
 
-## Running end-to-end tests
+```javascript
+const pattern = regex('pan');
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Supported Parameters
 
-## Further help
+You can find the parameters to use in function in below table.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Parameter     | Usage       | Output |
+| ------------- |-------------| ------------|
+| mail      | regex('mail') | **^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$**
+| pan      | regex('pan')      | **^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$**
+| aadhar      | regex('aadhar')      | **^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$**
+| gst | regex('gst')      | **^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$**
+
+Currently, We focussed on these 4 primary patterns which are widely use in **India**. And we are working on improving this module.
