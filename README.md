@@ -13,22 +13,31 @@ npm i gen-regex-angular
 # Usage
 
 ## <p>Step 1</p>
-Import package in your node js project
+Import module in your `app.component.ts` file
 
-```javascript
-const regex = require('gen-regex');
+```typescript
+import { GenRegexAngular } from 'gen-regex-angular';
 ```
 
 ## <p>Step 2</p>
-After import, use the created instance throughout your project by passing the parameters for which you have to create the regex pattern
+After import, create instance of imported module inside constructor
 
-```javascript
-const pattern = regex('mail');
+```typescript
+constructor(private genRegexAngular: GenRegexAngular) {}
 ```
-or
+## <p>Step 3</p>
+Now, you are all set to use this module in your angular project.
 
-```javascript
-const pattern = regex('pan');
+To use the particular regex pattern for formcontrol validation. Suppose we have to validate formcontrol **"email"**. The code will look like
+
+```typescript
+email = new FormControl('', [Validators.pattern(this.genRegexAngular.regexpattern('mail'))])
+```
+
+above code is similar to
+
+```typescript
+email = new FormControl('', [Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$')])
 ```
 
 # Supported Parameters
@@ -37,9 +46,9 @@ You can find the parameters to use in function in below table.
 
 | Parameter     | Usage       | Output |
 | ------------- |-------------| ------------|
-| mail      | regex('mail') | **^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$**
-| pan      | regex('pan')      | **^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$**
-| aadhar      | regex('aadhar')      | **^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$**
-| gst | regex('gst')      | **^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$**
+| mail      | regexpattern('mail') | **^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$**
+| pan      | regexpattern('pan')      | **^[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}$**
+| aadhar      | regexpattern('aadhar')      | **^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$**
+| gst | regexpattern('gst')      | **^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$**
 
-Currently, We focussed on these 4 primary patterns which are widely use in **India**. And we are working on improving this module.
+Currently, We focussed on these 4 primary patterns which are widely used in **India**. We are working on improving this module.
