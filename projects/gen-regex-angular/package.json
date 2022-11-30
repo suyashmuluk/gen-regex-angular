@@ -21,10 +21,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/suyashmuluk/gen-regex.git"
+    "url": "https://github.com/suyashmuluk/gen-regex-angular"
   },
   "bugs": {
-    "url": "https://github.com/suyashmuluk/gen-regex/issues"
+    "url": "https://github.com/suyashmuluk/gen-regex-angular/issues"
   },
-  "homepage": "https://github.com/suyashmuluk/gen-regex#readme"
+  "homepage": "https://github.com/suyashmuluk/gen-regex-angular#readme"
 }
