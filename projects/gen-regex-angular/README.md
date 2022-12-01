@@ -1,4 +1,4 @@
-# gen-regex
+# gen-regex-angular
 
 # Intro
 

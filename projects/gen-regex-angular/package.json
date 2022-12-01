@@ -1,6 +1,6 @@
 {
   "name": "gen-regex-angular",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Generates regular expression according to passed parameter",
   "keywords": [
     "regex",
